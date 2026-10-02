@@ -1,0 +1,27 @@
+/*
+ * dut: USART2 (PD5 TX / PD6 RX) on DMA1 through DMAMUX1, TX stream 2 (request 44),
+ * RX stream 3 (request 43). Same setup as
+ * tests/drivers/uart/uart_async_api/boards/nucleo_h745zi_q_stm32h745xx_m7.overlay.
+ * STM32H7 is not affected by the DMAT erratum.
+ */
+dut: &usart2 {
+	dmas = <&dmamux1 2 44 STM32_DMA_PERIPH_TX>,
+	       <&dmamux1 3 43 STM32_DMA_PERIPH_RX>;
+	dma-names = "tx", "rx";
+	pinctrl-0 = <&usart2_tx_pd5 &usart2_rx_pd6>;
+	pinctrl-names = "default";
+	current-speed = <115200>;
+	status = "okay";
+};
+
+&dma1 {
+	status = "okay";
+};
+
+&dma2 {
+	status = "okay";
+};
+
+&dmamux1 {
+	status = "okay";
+};

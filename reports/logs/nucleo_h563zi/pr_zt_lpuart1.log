@@ -1,0 +1,130 @@
+*** Booting Zephyr OS build v4.4.0-17965-g67b70ed6bef5 ***
+Running TESTSUITE uart_async_chain_read
+===================================================================
+UART instance:serial@44002400
+START - test_chained_read
+ PASS - test_chained_read in 0.427 seconds
+===================================================================
+TESTSUITE uart_async_chain_read succeeded
+Running TESTSUITE uart_async_chain_write
+===================================================================
+UART instance:serial@44002400
+START - test_chained_write
+ PASS - test_chained_write in 0.002 seconds
+===================================================================
+TESTSUITE uart_async_chain_write succeeded
+Running TESTSUITE uart_async_double_buf
+===================================================================
+UART instance:serial@44002400
+START - test_double_buffer
+*** Booting Zephyr OS build v4.4.0-17965-g67b70ed6bef5 ***
+Running TESTSUITE uart_async_chain_read
+===================================================================
+UART instance:serial@44002400
+START - test_chained_read
+ PASS - test_chained_read in 0.427 seconds
+===================================================================
+TESTSUITE uart_async_chain_read succeeded
+Running TESTSUITE uart_async_chain_write
+===================================================================
+UART instance:serial@44002400
+START - test_chained_write
+ PASS - test_chained_write in 0.002 seconds
+===================================================================
+TESTSUITE uart_async_chain_write succeeded
+Running TESTSUITE uart_async_double_buf
+===================================================================
+UART instance:serial@44002400
+START - test_double_buffer
+ PASS - test_double_buffer in 1.722 seconds
+===================================================================
+TESTSUITE uart_async_double_buf succeeded
+Running TESTSUITE uart_async_long_buf
+===================================================================
+UART instance:serial@44002400
+START - test_long_buffers
+
+    Assertion failed at WEST_TOPDIR/zephyr/tests/drivers/uart/uart_async_api/src/test_uart_async.c:1070: uart_async_long_buf_test_long_buffers: (long_received[0] not equal to tx_len1)
+Wrong number of bytes received.
+ FAIL - test_long_buffers in 0.064 seconds
+===================================================================
+TESTSUITE uart_async_long_buf failed.
+Running TESTSUITE uart_async_multi_rx
+===================================================================
+UART instance:serial@44002400
+START - test_multiple_rx_enable
+ PASS - test_multiple_rx_enable in 0.702 seconds
+===================================================================
+TESTSUITE uart_async_multi_rx succeeded
+Running TESTSUITE uart_async_read_abort
+===================================================================
+UART instance:serial@44002400
+START - test_read_abort
+ PASS - test_read_abort in 1.114 seconds
+===================================================================
+TESTSUITE uart_async_read_abort succeeded
+Running TESTSUITE uart_async_single_read
+===================================================================
+UART instance:serial@44002400
+START - test_single_read
+ PASS - test_single_read in 0.703 seconds
+===================================================================
+TESTSUITE uart_async_single_read succeeded
+Running TESTSUITE uart_async_timeout
+===================================================================
+UART instance:serial@44002400
+START - test_forever_timeout
+ PASS - test_forever_timeout in 3.001 seconds
+===================================================================
+TESTSUITE uart_async_timeout succeeded
+Running TESTSUITE uart_async_var_buf_length
+===================================================================
+UART instance:serial@44002400
+START - test_var_buf_length
+ PASS - test_var_buf_length in 0.065 seconds
+===================================================================
+TESTSUITE uart_async_var_buf_length succeeded
+Running TESTSUITE uart_async_write_abort
+===================================================================
+UART instance:serial@44002400
+START - test_write_abort
+ PASS - test_write_abort in 0.132 seconds
+===================================================================
+TESTSUITE uart_async_write_abort succeeded
+
+------ TESTSUITE SUMMARY START ------
+
+SUITE PASS - 100.00% [uart_async_chain_read]: pass = 1, fail = 0, skip = 0, total = 1 duration = 0.427 seconds
+ - PASS - [uart_async_chain_read.test_chained_read] duration = 0.427 seconds
+
+SUITE PASS - 100.00% [uart_async_chain_write]: pass = 1, fail = 0, skip = 0, total = 1 duration = 0.002 seconds
+ - PASS - [uart_async_chain_write.test_chained_write] duration = 0.002 seconds
+
+SUITE PASS - 100.00% [uart_async_double_buf]: pass = 1, fail = 0, skip = 0, total = 1 duration = 1.722 seconds
+ - PASS - [uart_async_double_buf.test_double_buffer] duration = 1.722 seconds
+
+SUITE FAIL -   0.00% [uart_async_long_buf]: pass = 0, fail = 1, skip = 0, total = 1 duration = 0.064 seconds
+ - FAIL - [uart_async_long_buf.test_long_buffers] duration = 0.064 seconds
+
+SUITE PASS - 100.00% [uart_async_multi_rx]: pass = 1, fail = 0, skip = 0, total = 1 duration = 0.702 seconds
+ - PASS - [uart_async_multi_rx.test_multiple_rx_enable] duration = 0.702 seconds
+
+SUITE PASS - 100.00% [uart_async_read_abort]: pass = 1, fail = 0, skip = 0, total = 1 duration = 1.114 seconds
+ - PASS - [uart_async_read_abort.test_read_abort] duration = 1.114 seconds
+
+SUITE PASS - 100.00% [uart_async_single_read]: pass = 1, fail = 0, skip = 0, total = 1 duration = 0.703 seconds
+ - PASS - [uart_async_single_read.test_single_read] duration = 0.703 seconds
+
+SUITE PASS - 100.00% [uart_async_timeout]: pass = 1, fail = 0, skip = 0, total = 1 duration = 3.001 seconds
+ - PASS - [uart_async_timeout.test_forever_timeout] duration = 3.001 seconds
+
+SUITE PASS - 100.00% [uart_async_var_buf_length]: pass = 1, fail = 0, skip = 0, total = 1 duration = 0.065 seconds
+ - PASS - [uart_async_var_buf_length.test_var_buf_length] duration = 0.065 seconds
+
+SUITE PASS - 100.00% [uart_async_write_abort]: pass = 1, fail = 0, skip = 0, total = 1 duration = 0.132 seconds
+ - PASS - [uart_async_write_abort.test_write_abort] duration = 0.132 seconds
+
+------ TESTSUITE SUMMARY END ------
+
+===================================================================
+PROJECT EXECUTION FAILED

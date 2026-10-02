@@ -1,0 +1,9 @@
+/*
+ * dut: USART2 (PD5 TX / PD6 RX) on GPDMA1, TX channel 2 (request 27),
+ * RX channel 3 (request 26). Channels 0-11 have an 8-byte FIFO.
+ */
+dut: &usart2 {
+	dmas = <&gpdma1 2 27 STM32_DMA_PERIPH_TX>,
+	       <&gpdma1 3 26 STM32_DMA_PERIPH_RX>;
+	dma-names = "tx", "rx";
+};

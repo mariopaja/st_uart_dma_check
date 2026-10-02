@@ -1,0 +1,10 @@
+/*
+ * dut: LPUART1 (Arduino D1 = PB6 TX / D0 = PB7 RX) on GPDMA1, TX channel 2
+ * (request 46), RX channel 3 (request 45). The console stays on USART3.
+ * STM32H563 is affected by the DMAT erratum (ES0565), like the U575.
+ */
+dut: &lpuart1 {
+	dmas = <&gpdma1 2 46 STM32_DMA_PERIPH_TX>,
+	       <&gpdma1 3 45 STM32_DMA_PERIPH_RX>;
+	dma-names = "tx", "rx";
+};

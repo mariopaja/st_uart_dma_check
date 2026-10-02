@@ -1,0 +1,107 @@
+image: v4.4.0-17960-g5075ddf1460b
++ STM32_Programmer_CLI -c port=swd mode=POWERDOWN -d <build>/h7_base_app/zephyr/zephyr.hex -v
+      -------------------------------------------------------------------
+                        STM32CubeProgrammer v2.22.0                  
+      -------------------------------------------------------------------
+
+ST-LINK SN  : <redacted>
+ST-LINK FW  : V3J15M6
+Board       : NUCLEO-H745ZI-Q
+Voltage     : 3.26V
+SWD freq    : 8000 KHz
+Connect mode: Power Down
+Reset mode  : Software reset
+Device ID   : 0x450
+Revision ID : Rev V
+Device name : STM32H7xx
+NVM size  : 2 MBytes
+Device type : MCU
+Device CPU  : Cortex-M7/M4
+BL Version  : 0x91
+
+
+
+Opening and parsing file: zephyr.hex
+
+
+Memory Programming ...
+  File          : zephyr.hex
+  Size          : 30.23 KB 
+  Address       : 0x08000000
+
+
+Erasing memory corresponding to segment 0:
+Erasing internal memory sector 0
+Download in Progress:
+[==================================================] 100% 
+
+File download complete
+Time elapsed during download operation: 00:00:04.166
+
+
+
+Verifying...
+
+
+Read progress:
+[==================================================] 100% 
+
+Time elapsed during verifying operation: 00:00:00.109
+
+
+Download verified successfully
+
+
+*** Booting Zephyr OS build v4.4.0-17960-g5075ddf1460b ***
+
+=== uart dma check: start pm_lock=0 ===
+--- round 0
+plain tx                           PASS done=1 len=200 t=17370us aborted=0 len=0 pm_lock=0
+    [before rx_on] UE=1 TE=1 TCIE=1 TC=0 TXE=0 done=0
+    [after rx_on] UE=1 TE=1 TCIE=1 TC=0 TXE=0 done=0
+rx_enable during tx                PASS done=1 len=200 t=17369us aborted=0 len=0 pm_lock=0
+  next tx after it                 PASS done=1 len=200 t=17369us aborted=0 len=0 pm_lock=0
+  pm_lock after rx_disable=0
+    [before abort] UE=1 TE=1 TCIE=1 TC=0 TXE=0 done=0
+    [after abort] UE=1 TE=1 TCIE=1 TC=0 TXE=0 done=0
+    [abort+1ms] UE=1 TE=1 TCIE=0 TC=1 TXE=1 done=1
+abort mid tx                       FAIL done=1 len=0 t=7734us aborted=1 len=89 pm_lock=0
+abort immediately                  FAIL done=1 len=0 t=182us aborted=1 len=2 pm_lock=0
+rx_enable, then abort              FAIL done=1 len=0 t=4175us aborted=1 len=48 pm_lock=0
+  next tx after it                 PASS done=1 len=200 t=17369us aborted=0 len=0 pm_lock=0
+tx timeout (driver abort)          FAIL done=1 len=0 t=5220us aborted=1 len=60 pm_lock=0
+plain tx                           PASS done=1 len=200 t=17369us aborted=0 len=0 pm_lock=0
+--- round 1
+plain tx                           PASS done=1 len=200 t=17369us aborted=0 len=0 pm_lock=0
+    [before rx_on] UE=1 TE=1 TCIE=1 TC=0 TXE=0 done=0
+    [after rx_on] UE=1 TE=1 TCIE=1 TC=0 TXE=0 done=0
+rx_enable during tx                PASS done=1 len=200 t=17369us aborted=0 len=0 pm_lock=0
+  next tx after it                 PASS done=1 len=200 t=17369us aborted=0 len=0 pm_lock=0
+  pm_lock after rx_disable=0
+    [before abort] UE=1 TE=1 TCIE=1 TC=0 TXE=0 done=0
+    [after abort] UE=1 TE=1 TCIE=1 TC=0 TXE=0 done=0
+    [abort+1ms] UE=1 TE=1 TCIE=0 TC=1 TXE=1 done=1
+abort mid tx                       FAIL done=1 len=0 t=7734us aborted=1 len=89 pm_lock=0
+abort immediately                  FAIL done=1 len=0 t=182us aborted=1 len=2 pm_lock=0
+rx_enable, then abort              FAIL done=1 len=0 t=4175us aborted=1 len=48 pm_lock=0
+  next tx after it                 PASS done=1 len=200 t=17369us aborted=0 len=0 pm_lock=0
+tx timeout (driver abort)          FAIL done=1 len=0 t=5220us aborted=1 len=60 pm_lock=0
+plain tx                           PASS done=1 len=200 t=17369us aborted=0 len=0 pm_lock=0
+--- round 2
+plain tx                           PASS done=1 len=200 t=17369us aborted=0 len=0 pm_lock=0
+    [before rx_on] UE=1 TE=1 TCIE=1 TC=0 TXE=0 done=0
+    [after rx_on] UE=1 TE=1 TCIE=1 TC=0 TXE=0 done=0
+rx_enable during tx                PASS done=1 len=200 t=17369us aborted=0 len=0 pm_lock=0
+  next tx after it                 PASS done=1 len=200 t=17369us aborted=0 len=0 pm_lock=0
+  pm_lock after rx_disable=0
+    [before abort] UE=1 TE=1 TCIE=1 TC=0 TXE=0 done=0
+    [after abort] UE=1 TE=1 TCIE=1 TC=0 TXE=0 done=0
+    [abort+1ms] UE=1 TE=1 TCIE=0 TC=1 TXE=1 done=1
+abort mid tx                       FAIL done=1 len=0 t=7734us aborted=1 len=89 pm_lock=0
+abort immediately                  FAIL done=1 len=0 t=182us aborted=1 len=2 pm_lock=0
+rx_enable, then abort              FAIL done=1 len=0 t=4175us aborted=1 len=48 pm_lock=0
+  next tx after it                 PASS done=1 len=200 t=17369us aborted=0 len=0 pm_lock=0
+tx timeout (driver abort)          FAIL done=1 len=0 t=5220us aborted=1 len=60 pm_lock=0
+plain tx                           PASS done=1 len=200 t=17369us aborted=0 len=0 pm_lock=0
+=== uart dma check: 12 failures, end pm_lock=0 ===
+

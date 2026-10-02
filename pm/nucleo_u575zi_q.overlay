@@ -1,0 +1,4 @@
+/* Device PM variant: limit sleep to STOP0/STOP1, as the ST serial wakeup sample does on U5 */
+&cpu0 {
+	cpu-power-states = <&stop0 &stop1>;
+};

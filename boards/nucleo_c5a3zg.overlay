@@ -1,0 +1,10 @@
+/*
+ * dut: USART2 (PD5 TX / PD6 RX) on LPDMA1, TX channel 0 (request 15), RX channel 1
+ * (request 14). Same setup as tests/drivers/uart/uart_async_api/boards/nucleo_c5a3zg.overlay.
+ * STM32C5 is not affected by the DMAT erratum and builds with HAL2; LPDMA has no FIFO.
+ */
+dut: &usart2 {
+	dmas = <&lpdma1 0 15 STM32_DMA_PERIPH_TX>,
+	       <&lpdma1 1 14 STM32_DMA_PERIPH_RX>;
+	dma-names = "tx", "rx";
+};
