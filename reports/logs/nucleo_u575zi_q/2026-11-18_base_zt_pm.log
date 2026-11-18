@@ -1,0 +1,80 @@
+*** Booting Zephyr OS build v4.5.0-3564-ge93364226633 ***
+Running TESTSUITE uart_async_chain_read
+===================================================================
+UART instance:serial@40004400
+START - test_chained_read
+ PASS - test_chained_read in 0.433 seconds
+===================================================================
+TESTSUITE uart_async_chain_read succeeded
+Running TESTSUITE uart_async_chain_write
+===================================================================
+UART instance:serial@40004400
+START - test_chained_write
+ PASS - test_chained_write in 0.003 seconds
+===================================================================
+TESTSUITE uart_async_chain_write succeeded
+Running TESTSUITE uart_async_double_buf
+===================================================================
+UART instance:serial@40004400
+START - test_double_buffer
+
+    Assertion failed at WEST_TOPDIR/zephyr/tests/drivers/uart/uart_async_api/src/test_uart_async.c:607: uart_async_double_buf_test_double_buffer: (k_sem_take(&rx_rdy, K_MSEC(100)) not equal to 0)
+RX_RDY timeout
+ FAIL - test_double_buffer in 0.120 seconds
+===================================================================
+TESTSUITE uart_async_double_buf failed.
+Running TESTSUITE uart_async_long_buf
+===================================================================
+UART instance:serial@40004400
+START - test_long_buffers
+
+    Assertion failed at WEST_TOPDIR/zephyr/tests/drivers/uart/uart_async_api/src/test_uart_async.c:1116: uart_async_long_buf_test_long_buffers: (k_sem_take(&rx_rdy, K_MSEC(200)) not equal to 0)
+RX_RDY timeout
+ FAIL - test_long_buffers in 0.263 seconds
+===================================================================
+TESTSUITE uart_async_long_buf failed.
+Running TESTSUITE uart_async_multi_rx
+===================================================================
+UART instance:serial@40004400
+START - test_multiple_rx_enable
+ PASS - test_multiple_rx_enable in 0.705 seconds
+===================================================================
+TESTSUITE uart_async_multi_rx succeeded
+Running TESTSUITE uart_async_pm
+===================================================================
+UART instance:serial@40004400
+START - test_uart_pm_light_sleep
+ PASS - test_uart_pm_light_sleep in 0.403 seconds
+===================================================================
+TESTSUITE uart_async_pm succeeded
+Running TESTSUITE uart_async_read_abort
+===================================================================
+UART instance:serial@40004400
+START - test_read_abort
+
+    Assertion failed at WEST_TOPDIR/zephyr/tests/drivers/uart/uart_async_api/src/test_uart_async.c:752: uart_async_read_abort_test_read_abort: (k_sem_take(&rx_rdy, K_USEC(tx_timeout_us + rx_timeout_us)) is non-zero)
+RX_RDY timeout
+ FAIL - test_read_abort in 0.078 seconds
+===================================================================
+TESTSUITE uart_async_read_abort failed.
+Running TESTSUITE uart_async_single_read
+===================================================================
+UART instance:serial@40004400
+START - test_single_read
+
+    Assertion failed at WEST_TOPDIR/zephyr/tests/drivers/uart/uart_async_api/src/test_uart_async.c:274: single_read: (k_sem_take(&rx_rdy, K_MSEC(timeout_ms + tx_time_ms)) not equal to 0)
+RX_RDY timeout
+ FAIL - test_single_read in 0.205 seconds
+===================================================================
+TESTSUITE uart_async_single_read failed.
+Running TESTSUITE uart_async_timeout
+===================================================================
+UART instance:serial@40004400
+START - test_forever_timeout
+ PASS - test_forever_timeout in 3.002 seconds
+===================================================================
+TESTSUITE uart_async_timeout succeeded
+Running TESTSUITE uart_async_var_buf_length
+===================================================================
+UART instance:serial@40004400
+START - test_var_buf_length

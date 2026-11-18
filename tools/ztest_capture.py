@@ -26,10 +26,12 @@ while time.time() - t0 < secs:
 open(out, "wb").write(data)
 
 text = re.sub(r"\x1b\[[0-9;]*m", "", data.decode(errors="replace"))
-# The board may be reset more than once while the port is open: count only the last boot.
+# Count only the last boot: the port can also hold lines from the previously flashed image
+# (no banner in front of them) or from an extra reset.
 boots = text.count("*** Booting Zephyr")
-if boots > 1:
+if boots:
     text = text[text.rindex("*** Booting Zephyr"):]
+if boots > 1:
     print(f"note: {boots} boots in the capture, counting the last one")
 passed = len(re.findall(r"^ - PASS - ", text, re.M))
 failed = re.findall(r"^ - FAIL - (\[[^\]]+\])", text, re.M)

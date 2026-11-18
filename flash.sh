@@ -91,6 +91,9 @@ nucleo_f429zi) pyocd_target="stm32f429zitx" ;;
 nucleo_h563zi) pyocd_target="stm32h563zitx" ;;
 nucleo_h745zi_q/stm32h745xx/m7) pyocd_target="stm32h745zitx" ;;
 nucleo_c5a3zg) pyocd_target="" ;;
+nucleo_h7s3l8) pyocd_target="stm32h7s3l8hx" ;;
+nucleo_f767zi) pyocd_target="stm32f767zitx" ;;
+nucleo_u3c5zi_q) pyocd_target="" ;;
 *) echo "unknown board: $board" >&2; exit 2 ;;
 esac
 case "$variant" in

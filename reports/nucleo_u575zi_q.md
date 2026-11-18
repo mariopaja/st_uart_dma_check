@@ -152,3 +152,23 @@ Every commit of the series builds for `nucleo_u575zi_q` with and without `CONFIG
 - `CONFIG_PM=y` alone hangs after the boot banner, on `main` too. Device PM needs `pm.conf` and
   `pm/nucleo_u575zi_q.overlay` (STOP0/STOP1).
 - After a PM image only connect mode `POWERDOWN` reaches the target.
+
+## Re-run 2026-11-18 (PR at `32899e5dde2`, `main` at `e9336422663`)
+
+`tools/hw_matrix.sh`, PD5-PD6 jumper.
+
+| Test | `main` | PR |
+|---|---|---|
+| Check app, no PM | **15 failures** | 0 failures |
+| Check app, device PM | **20 failures** | 0 failures |
+| Sample `async_api`, `CONFIG_LOG=n` | **2 corrupted** (`�op 2/4: Packet: 0`, first packet of each RX-enable loop), 7 intact over 2 loops | 13 intact over 5 loops, no gaps |
+| Sample `async_api`, device PM | **2 corrupted** (same), 5 intact over 2 loops | 11 intact, 1 corrupted: first byte after the boot banner (`oop 0`), as on the H563 |
+| `tests/drivers/uart/uart_async_api` | 10/10 | 10/10 |
+| `uart_async_api` with device PM, STOP0/STOP1 | 6/11 (5 RX cases time out on `rx_rdy`) | 6/11 (same cases) |
+
+The device PM ztest first ran without `pm/nucleo_u575zi_q.overlay` (the script applied it to the
+check app only), so STOP2 was allowed: it hung in `test_var_buf_length` on both builds. In STOP2,
+USART2 and GPDMA1 stop; only LPUART1/LPDMA1 keep running. Rerun with the overlay (STOP0/STOP1,
+PR at `229ec334fe5`, same driver code): 6/11 on both, the same cases as on the H563, F429 and
+C5A3. The sample results with STOP0/STOP1 match the table above. Logs: `*_stop01.log`.
+Logs: `reports/logs/nucleo_u575zi_q/2026-11-18_*.log`.

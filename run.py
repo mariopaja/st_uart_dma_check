@@ -3,6 +3,7 @@
 
 Usage: run.py [seconds] [port]   (defaults: 50, /dev/ttyACM0)
 """
+import re
 import sys
 import time
 
@@ -16,6 +17,8 @@ data = b""
 t0 = time.time()
 while time.time() - t0 < secs:
     data += ser.read(4096)
-    if b"=== uart dma check:" in data and data.count(b"===") >= 4:
+    # stop on the end line of the last boot; lines before the banner are from the previous image
+    last = data[data.rfind(b"*** Booting Zephyr"):] if b"*** Booting Zephyr" in data else b""
+    if re.search(rb"=== uart dma check: \d+ failures", last):
         break
-print(data.decode(errors="replace"))
+print(last.decode(errors="replace") or data.decode(errors="replace"))

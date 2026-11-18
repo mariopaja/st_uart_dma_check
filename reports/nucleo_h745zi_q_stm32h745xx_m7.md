@@ -168,3 +168,16 @@ A first run without a working loopback failed all 10 cases on both builds on RX 
 `logs/nucleo_h745zi_q_stm32h745xx_m7/`: `{base,pr}_app.log`, `{base,pr}_sample.log`,
 `{base,pr}_zt_loopback.log` (in-tree test), `{base,pr}_zt_no_loopback.log` (first run, no
 loopback).
+
+## Re-run 2026-11-18 (PR at `32899e5dde2`, `main` at `e9336422663`)
+
+`tools/hw_matrix.sh`, PD5-PD6 jumper. No PM on H7.
+
+| Test | `main` | PR |
+|---|---|---|
+| Check app | **12 failures** (every abort case) | 0 failures |
+| Sample `async_api`, `CONFIG_LOG=n` | 10 packets, 5 loops, intact, no gaps | 15 packets, 5 loops, intact, no gaps |
+| `tests/drivers/uart/uart_async_api` | 10/10 | 10/10 |
+
+Packet counts differ only by the sample's random 1 to 4 packets per loop.
+Logs: `reports/logs/nucleo_h745zi_q_stm32h745xx_m7/2026-11-18_*.log`.

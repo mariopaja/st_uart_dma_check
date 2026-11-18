@@ -1,0 +1,10 @@
+/*
+ * dut: USART1 (Arduino D1 = PB14 TX / D0 = PA10 RX) on GPDMA1, TX channel 2
+ * (request 74), RX channel 3 (request 73). The console stays on USART3.
+ * STM32H7S3 is not affected by the DMAT erratum.
+ */
+dut: &usart1 {
+	dmas = <&gpdma1 2 74 STM32_DMA_PERIPH_TX>,
+	       <&gpdma1 3 73 STM32_DMA_PERIPH_RX>;
+	dma-names = "tx", "rx";
+};

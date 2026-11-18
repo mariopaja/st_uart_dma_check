@@ -183,3 +183,19 @@ all cases on RX timeouts; its logs are kept as `*_no_loopback.log`.
 `logs/nucleo_c5a3zg/`: `{base,pr}_app_nopm.log`, `{base,pr}_app_pm.log`, `{base,pr}_sample.log`,
 `{base,pr}_sample_pm.log`, `{base,pr}_zt.log`, `{base,pr}_zt_pm.log` (in-tree test with loopback),
 `pr_zt_pm_no_power_states.log`, `{base,pr}_zt{,_pm}_no_loopback.log` (first run, no loopback).
+
+## Re-run 2026-11-18 (PR at `32899e5dde2`, `main` at `e9336422663`)
+
+`tools/hw_matrix.sh`, PD5-PD6 jumper (checked over SWD: PD6 follows PD5).
+
+| Test | `main` | PR |
+|---|---|---|
+| Check app, no PM | **12 failures** | 0 failures |
+| Check app, device PM | **12 failures** | 0 failures |
+| Sample `async_api`, `CONFIG_LOG=n`, no PM | 11 packets over 5 loops, intact, no gaps | 13 packets over 5 loops, intact, no gaps |
+| Sample `async_api`, device PM | 13 packets over 5 loops, intact, no gaps | 13 packets over 5 loops, intact, no gaps |
+| `tests/drivers/uart/uart_async_api`, no PM | 10/10 | 10/10 |
+| `uart_async_api`, device PM | 6/11 (same 5 RX cases) | 6/11 (same cases) |
+
+Same as the first run.
+Logs: `reports/logs/nucleo_c5a3zg/2026-11-18_*.log`.

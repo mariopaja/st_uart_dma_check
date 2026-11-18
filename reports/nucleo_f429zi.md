@@ -141,3 +141,21 @@ abort TX.
 - Sample `samples/drivers/uart/async_api` (see above).
 - `uart_async_pm` suite (needs `CONFIG_PM=y`).
 - Current consumption in STOP.
+
+## Re-run 2026-11-18 (PR at `32899e5dde2`, `main` at `e9336422663`)
+
+ST-LINK SN 0663FF353445503043082449, D0 (PG9) - D1 (PG14) jumper. Images flashed with
+STM32_Programmer_CLI, no rebuild; base built from a separate worktree at `main`.
+
+| Test | `main` | PR |
+|---|---|---|
+| Check app, no PM | **12 failures** (every abort: extra `TX_DONE len=0`) | 0 failures |
+| Check app, device PM | **12 failures** (same) | 0 failures, PM lock free after every case |
+| Sample `async_api`, `CONFIG_LOG=n` | 12 packets, 5 loops, intact, no gaps | 12 packets, 5 loops, intact, no gaps |
+| Sample `async_api`, device PM | 16 packets, 5 loops, intact, no gaps | 15 packets, 5 loops, intact, no gaps |
+| `tests/drivers/uart/uart_async_api` | 10/10 | 10/10 |
+| `uart_async_api` with device PM (`pm.conf`) | 6/11 (5 RX cases time out on `rx_rdy`) | 6/11 (same cases) |
+
+Same as the first run: abort lengths 89 / 1 / 48 / 60 on both, TX times unchanged (17.37 ms).
+Packet counts differ only by the sample's random 1 to 4 packets per loop.
+Logs: `reports/logs/nucleo_f429zi/2026-11-18_*.log`.

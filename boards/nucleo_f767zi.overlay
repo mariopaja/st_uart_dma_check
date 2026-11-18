@@ -1,0 +1,14 @@
+/*
+ * dut: USART6 (PG14 TX / PG9 RX) on DMA2, TX stream 7 and RX stream 2,
+ * both channel 5, FIFO enabled at full threshold. Same setup as
+ * tests/drivers/uart/uart_async_api/boards/nucleo_f767zi.overlay.
+ */
+dut: &usart6 {
+	dmas = <&dma2 7 5 STM32_DMA_PERIPH_TX STM32_DMA_FIFO_FULL>,
+	       <&dma2 2 5 STM32_DMA_PERIPH_RX STM32_DMA_FIFO_FULL>;
+	dma-names = "tx", "rx";
+};
+
+&dma2 {
+	status = "okay";
+};

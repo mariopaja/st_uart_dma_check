@@ -20,6 +20,9 @@ and, if present, `pm/<board>.overlay`. The console stays on the ST-LINK VCP (`/d
 | `nucleo_h563zi` | LPUART1 | GPDMA1 TX ch 2 / RX ch 3 | D1 = PB6 (TX) - D0 = PB7 (RX) | none (single `stop` state) |
 | `nucleo_h745zi_q/stm32h745xx/m7` | USART2 | DMA1 via DMAMUX1, TX req 44 / RX req 43 | PD5 (TX) - PD6 (RX) | no PM on H7; `.conf` sets `CONFIG_DCACHE=n` |
 | `nucleo_c5a3zg` | USART2 | LPDMA1 TX ch 0 / RX ch 1 (req 15/14) | PD5 (TX) - PD6 (RX) | none (STOP0/STOP1); HAL2, CubeProgrammer only |
+| `nucleo_h7s3l8` | USART1 | GPDMA1 TX ch 2 / RX ch 3 (req 74/73) | D1 = PB14 (TX) - D0 = PA10 (RX) | no PM on H7RS; `.conf` sets `CONFIG_DCACHE=n` |
+| `nucleo_f767zi` | USART6 | DMA2 TX stream 7 / RX stream 2, FIFO on | PG14 (TX) - PG9 (RX) | no PM on F7; `.conf` sets `CONFIG_DCACHE=n` |
+| `nucleo_u3c5zi_q` | LPUART1 | GPDMA1 TX ch 2 / RX ch 3 (req 35/34) | PG7 (TX) - PG8 (RX), wire them directly: a D0 - D1 jumper does not reach them | none (`pm.conf` only); ztest uses the same pins |
 
 The U575 and H563 are affected by the DMAT erratum (`CONFIG_UART_STM32U5_ERRATA_DMAT_AFFECTED`, see
 ES0499 and ES0565), so the UE-toggle workaround and the RX-enable-during-TX case apply to both. The
@@ -67,6 +70,14 @@ Notes:
 The run ends with `=== uart dma check: N failures, end pm_lock=X ===`. With PM, `end pm_lock=1` is
 expected: it is read right after a printk while the console still holds its own TX lock. The
 per-case values are read after a 40 ms wait.
+
+## Base vs PR matrix
+
+`tools/hw_matrix.sh BOARD [BASE_REF]` builds `main` (or `BASE_REF`, from a worktree in
+`build_matrix/zephyr_base`) and the current checkout, for the check app, the `async_api` sample and
+`tests/drivers/uart/uart_async_api`, with and without device PM (no PM on H7/H7RS). It flashes
+each image with STM32_Programmer_CLI, captures the VCP and writes one line per image to
+`build_matrix/<board>/summary.txt`. The ztest needs its loopback: PD5-PD6, PG14-PG9 on the F429.
 
 ## Expected results
 

@@ -248,3 +248,19 @@ the PR fixes, are intact with the PR and corrupted on `main`.
   `{base,pr}_sample_pm.log`, `pr_sample_pm_{2,3}.log`, `pr_sample_pm_nobanner_{1,2}.log`
 - in-tree test, LPUART1 (first overlay): `{base,pr}_zt_lpuart1.log`,
   `pr_zt_lpuart1_fifo_enable.log`, `pr_zt_lpuart1_long_buf_debug.log`
+
+## Re-run 2026-11-18 (PR at `32899e5dde2`, `main` at `e9336422663`)
+
+`tools/hw_matrix.sh`, PD5-PD6 jumper (the check app passes without loopback).
+
+| Test | `main` | PR |
+|---|---|---|
+| Check app, no PM | **15 failures** | 0 failures |
+| Check app, device PM | **20 failures** | 0 failures |
+| Sample `async_api`, `CONFIG_LOG=n` | **2 corrupted** (first packet of each RX-enable loop), 3 intact over 2 loops | 12 intact over 5 loops, no gaps |
+| Sample `async_api`, device PM | **2 corrupted** (same), 8 intact over 2 loops | 14 intact, 1 corrupted: first byte after the boot banner (`oop 0`) |
+| `tests/drivers/uart/uart_async_api` (USART2) | 10/10 | 10/10 |
+| `uart_async_api` with device PM | 6/11 (5 RX cases time out on `rx_rdy`) | 6/11 (same cases) |
+
+Same as the first run.
+Logs: `reports/logs/nucleo_h563zi/2026-11-18_*.log`.

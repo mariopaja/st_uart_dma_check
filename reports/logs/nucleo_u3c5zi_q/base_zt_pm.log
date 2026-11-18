@@ -1,0 +1,131 @@
+*** Booting Zephyr OS build v4.5.0-3564-ge93364226633 ***
+Running TESTSUITE uart_async_chain_read
+===================================================================
+UART instance:serial@40042400
+START - test_chained_read
+ PASS - test_chained_read in 0.430 seconds
+===================================================================
+TESTSUITE uart_async_chain_read succeeded
+Running TESTSUITE uart_async_chain_write
+===================================================================
+UART instance:serial@40042400
+START - test_chained_write
+ PASS - test_chained_write in 0.003 seconds
+===================================================================
+TESTSUITE uart_async_chain_write succeeded
+Running TESTSUITE uart_async_double_buf
+===================================================================
+UART instance:serial@40042400
+START - test_double_buffer
+ PASS - test_double_buffer in 1.751 seconds
+===================================================================
+TESTSUITE uart_async_double_buf succeeded
+Running TESTSUITE uart_async_long_buf
+===================================================================
+UART instance:serial@40042400
+START - test_long_buffers
+ PASS - test_long_buffers in 0.164 seconds
+===================================================================
+TESTSUITE uart_async_long_buf succeeded
+Running TESTSUITE uart_async_multi_rx
+===================================================================
+UART instance:serial@40042400
+START - test_multiple_rx_enable
+ PASS - test_multiple_rx_enable in 0.704 seconds
+===================================================================
+TESTSUITE uart_async_multi_rx succeeded
+Running TESTSUITE uart_async_pm
+===================================================================
+UART instance:serial@40042400
+START - test_uart_pm_light_sleep
+ PASS - test_uart_pm_light_sleep in 0.403 seconds
+===================================================================
+TESTSUITE uart_async_pm succeeded
+Running TESTSUITE uart_async_read_abort
+===================================================================
+UART instance:serial@40042400
+START - test_read_abort
+ PASS - test_read_abort in 1.112 seconds
+===================================================================
+TESTSUITE uart_async_read_abort succeeded
+Running TESTSUITE uart_async_single_read
+===================================================================
+UART instance:serial@40042400
+START - test_single_read
+
+    Assertion failed at WEST_TOPDIR/zephyr/tests/drivers/uart/uart_async_api/src/test_uart_async.c:198: tdata_check_recv_buffers: (recv_bytes_total not equal to sent_bytes)
+Incorrect number of bytes received
+ FAIL - test_single_read in 1.124 seconds
+===================================================================
+TESTSUITE uart_async_single_read failed.
+Running TESTSUITE uart_async_timeout
+===================================================================
+UART instance:serial@40042400
+START - test_forever_timeout
+
+    Assertion failed at WEST_TOPDIR/zephyr/tests/drivers/uart/uart_async_api/src/test_uart_async.c:938: uart_async_timeout_test_forever_timeout: (k_sem_take(&tx_done, K_MSEC(100)) not equal to 0)
+TX_DONE timeout
+ FAIL - test_forever_timeout in 3.120 seconds
+===================================================================
+TESTSUITE uart_async_timeout failed.
+Running TESTSUITE uart_async_var_buf_length
+===================================================================
+UART instance:serial@40042400
+START - test_var_buf_length
+
+    Assertion failed at WEST_TOPDIR/zephyr/tests/drivers/uart/uart_async_api/src/test_uart_async.c:1236: test_uart_async_var_buf: (ret == 0 is false)
+[buff=1][tx=2]Failed to TX: -16
+
+ FAIL - test_var_buf_length in 0.080 seconds
+===================================================================
+TESTSUITE uart_async_var_buf_length failed.
+Running TESTSUITE uart_async_write_abort
+===================================================================
+UART instance:serial@40042400
+START - test_write_abort
+
+    Assertion failed at WEST_TOPDIR/zephyr/tests/drivers/uart/uart_async_api/src/test_uart_async.c:850: uart_async_write_abort_test_write_abort: (k_sem_take(&tx_done, K_MSEC(100)) not equal to 0)
+TX_DONE timeout
+ FAIL - test_write_abort in 0.121 seconds
+===================================================================
+TESTSUITE uart_async_write_abort failed.
+
+------ TESTSUITE SUMMARY START ------
+
+SUITE PASS - 100.00% [uart_async_chain_read]: pass = 1, fail = 0, skip = 0, total = 1 duration = 0.430 seconds
+ - PASS - [uart_async_chain_read.test_chained_read] duration = 0.430 seconds
+
+SUITE PASS - 100.00% [uart_async_chain_write]: pass = 1, fail = 0, skip = 0, total = 1 duration = 0.003 seconds
+ - PASS - [uart_async_chain_write.test_chained_write] duration = 0.003 seconds
+
+SUITE PASS - 100.00% [uart_async_double_buf]: pass = 1, fail = 0, skip = 0, total = 1 duration = 1.751 seconds
+ - PASS - [uart_async_double_buf.test_double_buffer] duration = 1.751 seconds
+
+SUITE PASS - 100.00% [uart_async_long_buf]: pass = 1, fail = 0, skip = 0, total = 1 duration = 0.164 seconds
+ - PASS - [uart_async_long_buf.test_long_buffers] duration = 0.164 seconds
+
+SUITE PASS - 100.00% [uart_async_multi_rx]: pass = 1, fail = 0, skip = 0, total = 1 duration = 0.704 seconds
+ - PASS - [uart_async_multi_rx.test_multiple_rx_enable] duration = 0.704 seconds
+
+SUITE PASS - 100.00% [uart_async_pm]: pass = 1, fail = 0, skip = 0, total = 1 duration = 0.403 seconds
+ - PASS - [uart_async_pm.test_uart_pm_light_sleep] duration = 0.403 seconds
+
+SUITE PASS - 100.00% [uart_async_read_abort]: pass = 1, fail = 0, skip = 0, total = 1 duration = 1.112 seconds
+ - PASS - [uart_async_read_abort.test_read_abort] duration = 1.112 seconds
+
+SUITE FAIL -   0.00% [uart_async_single_read]: pass = 0, fail = 1, skip = 0, total = 1 duration = 1.124 seconds
+ - FAIL - [uart_async_single_read.test_single_read] duration = 1.124 seconds
+
+SUITE FAIL -   0.00% [uart_async_timeout]: pass = 0, fail = 1, skip = 0, total = 1 duration = 3.120 seconds
+ - FAIL - [uart_async_timeout.test_forever_timeout] duration = 3.120 seconds
+
+SUITE FAIL -   0.00% [uart_async_var_buf_length]: pass = 0, fail = 1, skip = 0, total = 1 duration = 0.080 seconds
+ - FAIL - [uart_async_var_buf_length.test_var_buf_length] duration = 0.080 seconds
+
+SUITE FAIL -   0.00% [uart_async_write_abort]: pass = 0, fail = 1, skip = 0, total = 1 duration = 0.121 seconds
+ - FAIL - [uart_async_write_abort.test_write_abort] duration = 0.121 seconds
+
+------ TESTSUITE SUMMARY END ------
+
+===================================================================
+PROJECT EXECUTION FAILED

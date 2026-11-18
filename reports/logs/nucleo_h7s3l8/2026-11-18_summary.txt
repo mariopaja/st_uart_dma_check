@@ -1,0 +1,6 @@
+base_app_nopm v4.5.0-3564-ge93364226633: uart dma check: 12 failures, end pm_lock=0 ===
+pr_app_nopm v4.5.0-3571-g32899e5dde26: uart dma check: 0 failures, end pm_lock=0 ===
+base_sample_nopm v4.5.0-3564-ge93364226633: good=14 bad_lines=0 loops=5 loops_with_gaps=0
+pr_sample_nopm v4.5.0-3571-g32899e5dde26: good=9 bad_lines=0 loops=5 loops_with_gaps=0
+base_zt_nopm BUILD FAIL (/home/mario/zephyrproject/002_samples/020_st_uart_dma_check/build_matrix/nucleo_h7s3l8/b_base_zt_nopm.build.log)
+pr_zt_nopm BUILD FAIL (/home/mario/zephyrproject/002_samples/020_st_uart_dma_check/build_matrix/nucleo_h7s3l8/b_pr_zt_nopm.build.log)

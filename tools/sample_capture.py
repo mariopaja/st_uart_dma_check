@@ -23,11 +23,12 @@ while time.time() - t0 < secs:
 text = data.decode(errors="replace")
 open(out, "w").write(text)
 
-# The board may be reset more than once while the port is open (flash, then a capture reset):
-# check only the output of the last boot.
+# Check only the output of the last boot: the port can also hold lines from the previously
+# flashed image (no banner in front of them) or from an extra reset.
 boots = text.count("*** Booting Zephyr")
-if boots > 1:
+if boots:
     text = text[text.rindex("*** Booting Zephyr"):]
+if boots > 1:
     print(f"note: {boots} boots in the capture, checking the last one")
 
 good = re.findall(r"^Loop (\d+): Packet: (\d+)\r?$", text, re.M)

@@ -1,0 +1,10 @@
+/*
+ * dut: LPUART1 (PG7 TX / PG8 RX, not on the D0/D1 header pins) on GPDMA1, TX channel 2
+ * (request 35), RX channel 3 (request 34). The console stays on USART1.
+ * STM32U3 is not affected by the DMAT erratum.
+ */
+dut: &lpuart1 {
+	dmas = <&gpdma1 2 35 STM32_DMA_PERIPH_TX>,
+	       <&gpdma1 3 34 STM32_DMA_PERIPH_RX>;
+	dma-names = "tx", "rx";
+};

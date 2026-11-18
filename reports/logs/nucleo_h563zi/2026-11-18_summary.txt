@@ -1,0 +1,12 @@
+base_app_nopm v4.5.0-3564-ge93364226633: uart dma check: 15 failures, end pm_lock=0 ===
+pr_app_nopm v4.5.0-3571-g32899e5dde26: uart dma check: 0 failures, end pm_lock=0 ===
+base_sample_nopm v4.5.0-3564-ge93364226633: good=3 bad_lines=2 loops=2 loops_with_gaps=0
+pr_sample_nopm v4.5.0-3571-g32899e5dde26: good=12 bad_lines=0 loops=5 loops_with_gaps=0
+base_zt_nopm v4.5.0-3564-ge93364226633: 10 pass, 0 fail, PROJECT EXECUTION SUCCESSFUL
+pr_zt_nopm v4.5.0-3571-g32899e5dde26: 10 pass, 0 fail, PROJECT EXECUTION SUCCESSFUL
+base_app_pm v4.5.0-3564-ge93364226633: uart dma check: 20 failures, end pm_lock=1 ===
+pr_app_pm v4.5.0-3571-g32899e5dde26: uart dma check: 0 failures, end pm_lock=1 ===
+base_sample_pm v4.5.0-3564-ge93364226633: good=8 bad_lines=2 loops=2 loops_with_gaps=0
+pr_sample_pm v4.5.0-3571-g32899e5dde26: good=14 bad_lines=1 loops=5 loops_with_gaps=1
+base_zt_pm v4.5.0-3564-ge93364226633: 6 pass, 5 fail, PROJECT EXECUTION FAILED
+pr_zt_pm v4.5.0-3571-g32899e5dde26: 6 pass, 5 fail, PROJECT EXECUTION FAILED
